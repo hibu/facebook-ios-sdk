@@ -1,9 +1,0 @@
-[submodule "vendor/OHHTTPStubs"]
-	path = vendor/OHHTTPStubs
-	url = https://github.com/AliSoftware/OHHTTPStubs.git
-[submodule "vendor/OCMock"]
-	path = vendor/OCMock
-	url = https://github.com/erikdoe/ocmock.git
-[submodule "vendor/OCHamcrest"]
-	path = vendor/OCHamcrest
-	url = https://github.com/hamcrest/OCHamcrest.git
