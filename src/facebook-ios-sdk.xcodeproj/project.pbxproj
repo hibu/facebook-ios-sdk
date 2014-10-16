@@ -2423,6 +2423,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 892B1FA11926A84100E61379 /* FacebookSDK-Project-Debug.xcconfig */;
 			buildSettings = {
+				ONLY_ACTIVE_ARCH = NO;
+				VALID_ARCHS = armv7;
 			};
 			name = Debug;
 		};
@@ -2430,6 +2432,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 892B1FA21926A84100E61379 /* FacebookSDK-Project-Release.xcconfig */;
 			buildSettings = {
+				ONLY_ACTIVE_ARCH = NO;
+				VALID_ARCHS = armv7;
 			};
 			name = Release;
 		};
@@ -2451,6 +2455,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8984B687192E746E0008D347 /* FacebookSDK-Project-Release-64.xcconfig */;
 			buildSettings = {
+				ONLY_ACTIVE_ARCH = NO;
+				VALID_ARCHS = armv7;
 			};
 			name = Release64;
 		};
@@ -2479,6 +2485,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8984B686192E746E0008D347 /* FacebookSDK-Project-Debug-64.xcconfig */;
 			buildSettings = {
+				ONLY_ACTIVE_ARCH = NO;
+				VALID_ARCHS = armv7;
 			};
 			name = Debug64;
 		};
