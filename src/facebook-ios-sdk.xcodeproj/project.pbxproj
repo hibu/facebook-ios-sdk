@@ -304,7 +304,6 @@
 		85BDF76317CD57C3002E7225 /* FBAppBridgeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 85BDF76217CD57C3002E7225 /* FBAppBridgeTests.m */; };
 		85BDF76717CE7FDF002E7225 /* FBIsURLHavingQueryParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 85BDF76517CE7FDF002E7225 /* FBIsURLHavingQueryParams.h */; };
 		85C60EE41698CFC000E7BB7D /* FBURLConnectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C60EE31698CFC000E7BB7D /* FBURLConnectionTests.m */; };
-		85C60EF21698DA8400E7BB7D /* libOHHTTPStubs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85C60EEF1698DA5300E7BB7D /* libOHHTTPStubs.a */; };
 		85C610961699109C00E7BB7D /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85C610951699109000E7BB7D /* libOCMock.a */; };
 		85C9D1BE16A79B4900D0ED57 /* OCHamcrestIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85C9D1BD16A79B4900D0ED57 /* OCHamcrestIOS.framework */; };
 		85DF1127156C64140082AA04 /* FBBatchRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 85DF1126156C64140082AA04 /* FBBatchRequestTests.m */; };
@@ -426,26 +425,47 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
+		363322F21A5E970E00E429A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85C610871699109000E7BB7D /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D31108AD1828DB8700737925;
+			remoteInfo = OCMockLibTests;
+		};
+		363322F81A5E970E00E429A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85C60EE61698DA5300E7BB7D /* OHHTTPStubs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 09110A4119805F4800D175E4;
+			remoteInfo = "OHHTTPStubs iOS";
+		};
+		363322FA1A5E970E00E429A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85C60EE61698DA5300E7BB7D /* OHHTTPStubs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 09110A5119805F4800D175E4;
+			remoteInfo = "OHHTTPStubs iOS Tests";
+		};
+		363322FC1A5E970E00E429A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85C60EE61698DA5300E7BB7D /* OHHTTPStubs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 095981C219806A7900807DBE;
+			remoteInfo = "OHHTTPStubs Mac";
+		};
+		363322FE1A5E970E00E429A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85C60EE61698DA5300E7BB7D /* OHHTTPStubs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 095981D219806A7900807DBE;
+			remoteInfo = "OHHTTPStubs Mac Tests";
+		};
 		85A44BC116A8CE59007BE80E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = "facebook-ios-sdk";
-		};
-		85C60EEE1698DA5300E7BB7D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 85C60EE61698DA5300E7BB7D /* OHHTTPStubs.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 09793579161B6251006DB5D5;
-			remoteInfo = OHHTTPStubs;
-		};
-		85C60EF01698DA5300E7BB7D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 85C60EE61698DA5300E7BB7D /* OHHTTPStubs.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 098368CE168FC7920082B1A4;
-			remoteInfo = UnitTests;
 		};
 		85C610901699109000E7BB7D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -769,7 +789,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				85C610961699109C00E7BB7D /* libOCMock.a in Frameworks */,
-				85C60EF21698DA8400E7BB7D /* libOHHTTPStubs.a in Frameworks */,
 				84B5F11C1552FD3C00A55DDC /* CoreGraphics.framework in Frameworks */,
 				84B5F11A1552F82200A55DDC /* UIKit.framework in Frameworks */,
 				B9CBC53215253F6D0036AA71 /* SenTestingKit.framework in Frameworks */,
@@ -1140,8 +1159,10 @@
 		85C60EE71698DA5300E7BB7D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				85C60EEF1698DA5300E7BB7D /* libOHHTTPStubs.a */,
-				85C60EF11698DA5300E7BB7D /* UnitTests.octest */,
+				363322F91A5E970E00E429A7 /* libOHHTTPStubs.a */,
+				363322FB1A5E970E00E429A7 /* OHHTTPStubs iOS Tests.xctest */,
+				363322FD1A5E970E00E429A7 /* OHHTTPStubs.framework */,
+				363322FF1A5E970E00E429A7 /* OHHTTPStubs Mac Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1150,8 +1171,9 @@
 			isa = PBXGroup;
 			children = (
 				85C610911699109000E7BB7D /* OCMock.framework */,
-				85C610931699109000E7BB7D /* OCMockTests.octest */,
+				85C610931699109000E7BB7D /* OCMockTests.xctest */,
 				85C610951699109000E7BB7D /* libOCMock.a */,
+				363322F31A5E970E00E429A7 /* OCMockLibTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1450,7 +1472,7 @@
 			name = FacebookSDKIntegrationTests;
 			productName = FacebookSDKIntegrationTests;
 			productReference = 85A44B9F16A8CE05007BE80E /* FacebookSDKIntegrationTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 		B9CBC518152537270036AA71 /* FacebookSDKTests */ = {
 			isa = PBXNativeTarget;
@@ -1470,7 +1492,7 @@
 			name = FacebookSDKTests;
 			productName = FacebookSDKTests;
 			productReference = B9CBC519152537270036AA71 /* FacebookSDKTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 		D2AAC07D0554694100DB518D /* facebook-ios-sdk */ = {
 			isa = PBXNativeTarget;
@@ -1529,18 +1551,39 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		85C60EEF1698DA5300E7BB7D /* libOHHTTPStubs.a */ = {
+		363322F31A5E970E00E429A7 /* OCMockLibTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = OCMockLibTests.xctest;
+			remoteRef = 363322F21A5E970E00E429A7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		363322F91A5E970E00E429A7 /* libOHHTTPStubs.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libOHHTTPStubs.a;
-			remoteRef = 85C60EEE1698DA5300E7BB7D /* PBXContainerItemProxy */;
+			remoteRef = 363322F81A5E970E00E429A7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		85C60EF11698DA5300E7BB7D /* UnitTests.octest */ = {
+		363322FB1A5E970E00E429A7 /* OHHTTPStubs iOS Tests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = UnitTests.octest;
-			remoteRef = 85C60EF01698DA5300E7BB7D /* PBXContainerItemProxy */;
+			path = "OHHTTPStubs iOS Tests.xctest";
+			remoteRef = 363322FA1A5E970E00E429A7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		363322FD1A5E970E00E429A7 /* OHHTTPStubs.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OHHTTPStubs.framework;
+			remoteRef = 363322FC1A5E970E00E429A7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		363322FF1A5E970E00E429A7 /* OHHTTPStubs Mac Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "OHHTTPStubs Mac Tests.xctest";
+			remoteRef = 363322FE1A5E970E00E429A7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		85C610911699109000E7BB7D /* OCMock.framework */ = {
@@ -1550,10 +1593,10 @@
 			remoteRef = 85C610901699109000E7BB7D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		85C610931699109000E7BB7D /* OCMockTests.octest */ = {
+		85C610931699109000E7BB7D /* OCMockTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = OCMockTests.octest;
+			path = OCMockTests.xctest;
 			remoteRef = 85C610921699109000E7BB7D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -1982,10 +2025,6 @@
 		1DEB922308733DC00010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD_32_BIT)",
-					armv6,
-				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_THUMB_SUPPORT = NO;
@@ -1993,7 +2032,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
@@ -2002,10 +2040,6 @@
 		1DEB922408733DC00010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD_32_BIT)",
-					armv6,
-				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -2085,7 +2119,6 @@
 		85AEC52D17E3930F0073BFEA /* Release64 */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -2183,7 +2216,6 @@
 		85AEC53617E3931A0073BFEA /* Debug64 */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_THUMB_SUPPORT = NO;
