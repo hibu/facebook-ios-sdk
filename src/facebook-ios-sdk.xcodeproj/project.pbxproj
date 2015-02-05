@@ -2457,6 +2457,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 892B1FA11926A84100E61379 /* FacebookSDK-Project-Debug.xcconfig */;
 			buildSettings = {
+				ONLY_ACTIVE_ARCH = NO;
 			};
 			name = Debug;
 		};
