@@ -2452,9 +2452,9 @@
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(BUILT_PRODUCTS_DIR)\"/**",
-					"\"$(DERIVED_FILE_DIR)\"/**",
-					"\"$(TARGET_BUILD_DIR)\"/**",
+					"\"$(BUILT_PRODUCTS_DIR)\"",
+					"\"$(DERIVED_FILE_DIR)\"",
+					"\"$(SRCROOT)/../Bolts-IOS/build/Release-iphoneos\"",
 				);
 			};
 			name = Release;
