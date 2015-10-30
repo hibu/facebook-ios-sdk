@@ -78,6 +78,7 @@
                                  tokenCacheStrategy:nil];
     
     [session openWithBehavior:behavior
+           fromViewController:nil
             completionHandler:nil];
     
     [(id)mockSession verify];
@@ -113,6 +114,7 @@
                                  tokenCacheStrategy:nil];
     
     [session openWithBehavior:behavior
+           fromViewController:nil
             completionHandler:nil];
     
     [(id)mockSession verify];
@@ -157,7 +159,9 @@
                                  tokenCacheStrategy:nil];
     
     __block BOOL handlerCalled = NO;
-    [session openWithBehavior:behavior completionHandler:^(FBSession *innerSession, FBSessionState status, NSError *error) {
+    [session openWithBehavior:behavior
+           fromViewController:nil
+            completionHandler:^(FBSession *innerSession, FBSessionState status, NSError *error) {
         handlerCalled = YES;
         [_blocker signal];
     }];
@@ -165,12 +169,12 @@
     [_blocker waitWithTimeout:.01];
     
     [(id)mockSession verify];
-    
-    assertThatBool(handlerCalled, equalToBool(YES));
-    assertThatInt(mockSession.state, equalToInt(FBSessionStateOpen));
+
+    XCTAssertTrue(handlerCalled);
+    XCTAssertEqual(FBSessionStateOpen, mockSession.state);
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-    assertThat(mockSession.accessToken, equalTo(kAuthenticationTestValidToken));
-    assertThatInt(mockSession.loginType, equalToInt(FBSessionLoginTypeFacebookViaSafari));
+    XCTAssertTrue([kAuthenticationTestValidToken isEqualToString:mockSession.accessToken]);
+    XCTAssertEqual(FBSessionLoginTypeFacebookViaSafari, mockSession.loginType);
     // TODO assert expiration date is what we set it to (within delta)
     
     [session release];
@@ -272,11 +276,11 @@
     [_blocker waitWithTimeout:.01];
     
     [(id)mockSession verify];
-    
-    assertThatBool(handlerCalled, equalToBool(YES));
-    assertThatInt(mockSession.state, equalToInt(FBSessionStateClosedLoginFailed));
-    assertThat(handlerError, notNilValue());
-    
+
+    XCTAssertTrue(handlerCalled);
+    XCTAssertEqual(FBSessionStateClosedLoginFailed, mockSession.state);
+    XCTAssertNotNil(handlerError);
+
     [session release];
 }
 

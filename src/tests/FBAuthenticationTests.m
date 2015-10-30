@@ -13,12 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 #import "FBAuthenticationTests.h"
-#import "FBSession.h"
-#import "FBSystemAccountStoreAdapter.h"
+
+#import <OCMock/OCMock.h>
+
+#import "FBDialogConfig.h"
 #import "FBRequest.h"
+#import "FBSession+FBSessionLoginStrategy.h"
 #import "FBSessionTokenCachingStrategy.h"
+#import "FBSystemAccountStoreAdapter.h"
 #import "FBTestBlocker.h"
 #import "FBUtility.h"
 
@@ -32,9 +35,6 @@ NSString *const kAuthenticationTestAppId = @"AnAppid";
 - (void)authorizeUsingSystemAccountStore:(NSArray *)permissions
                          defaultAudience:(FBSessionDefaultAudience)defaultAudience
                            isReauthorize:(BOOL)isReauthorize;
-- (BOOL)authorizeUsingFacebookApplication:(NSMutableDictionary *)params;
-- (void)authorizeUsingLoginDialog:(NSMutableDictionary *)params;
-- (BOOL)authorizeUsingSafari:(NSMutableDictionary *)params;
 - (FBSystemAccountStoreAdapter *)getSystemAccountStoreAdapter;
 - (NSString *)appBaseUrl;
 - (BOOL)tryOpenURL:(NSURL *)url;
@@ -49,7 +49,9 @@ NSString *const kAuthenticationTestAppId = @"AnAppid";
 
 @end
 
-@implementation FBAuthenticationTests
+@implementation FBAuthenticationTests {
+    id _mockFBDialogConfig;
+}
 
 - (void)setUp {
     [super setUp];
@@ -61,10 +63,19 @@ NSString *const kAuthenticationTestAppId = @"AnAppid";
     FBSession.activeSession = nil;
 
     _blocker = [[FBTestBlocker alloc] initWithExpectedSignalCount:1];
+
+    FBFetchedAppSettings *dummyFBFetchedAppSettings = [[[FBFetchedAppSettings alloc] init] autorelease];
+    dummyFBFetchedAppSettings.supportsSystemAuth = YES;
+
     // need to recreate the mockFBUtility for this specific test suite
     // since we do have tests that check behavior is isSystemAccountStoreAvailable
     // and you can't change an existing mock's stub.
     self.mockFBUtility = [OCMockObject mockForClass:[FBUtility class]];
+    [[[self.mockFBUtility stub] andReturn:dummyFBFetchedAppSettings] fetchedAppSettingsIfCurrent]; // prevent fetching app settings during FBSession authorizeWithPermissions
+
+    _mockFBDialogConfig = [OCMockObject mockForClass:[FBDialogConfig class]];
+    [[[_mockFBDialogConfig stub] andReturnValue:OCMOCK_VALUE(YES)] useNativeDialogForDialogName:OCMOCK_ANY];
+    [[[_mockFBDialogConfig stub] andReturnValue:OCMOCK_VALUE(YES)] useSafariViewControllerForDialogName:OCMOCK_ANY];
 }
 
 - (void)tearDown {
@@ -114,6 +125,10 @@ NSString *const kAuthenticationTestAppId = @"AnAppid";
      handler:[OCMArg any]];
 
     return mockSystemAccountStoreAdapter;
+}
+
+- (void)setFetchedSupportSystemAccount:(BOOL)supportSystemAccount {
+    [[FBUtility fetchedAppSettingsIfCurrent] setSupportsSystemAuth:supportSystemAccount];
 }
 
 - (void)mockSession:(id)mockSession supportSystemAccount:(BOOL)supportSystemAccount {
@@ -209,13 +224,13 @@ expectFacebookAppAuth:(BOOL)expect
 
         // We mock authorizeUsingFacebookApplication rather than tryOpenURL to avoid conflicting
         // with mockSession:expectFacebookAppAuth:try:succeed:
-        [mock authorizeUsingSafari:[OCMArg any]];
+        [mock authorizeUsingSafari:[OCMArg any] useSFVC:NO];
 
         // Make tryOpenURL: a no-op so it doesn't actually call out.
         BOOL no = NO;
         [[[mockSession stub] andReturnValue:OCMOCK_VALUE(no)] tryOpenURL:[OCMArg any]];
     } else {
-        [[mockSession reject] authorizeUsingSafari:[OCMArg any]];
+        [[mockSession reject] authorizeUsingSafari:[OCMArg any] useSFVC:NO];
     }
 }
 
