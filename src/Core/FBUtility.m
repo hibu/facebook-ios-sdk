@@ -372,15 +372,17 @@ NSString *const FBPersistedAnonymousIDKey   = @"anon_id";
 
 + (NSString *)advertiserID {
     
-    NSString *result = nil;
+//    NSString *result = nil;
+//    
+//    Class ASIdentifierManagerClass = fbdfl_ASIdentifierManagerClass();
+//    if ([ASIdentifierManagerClass class]) {
+//        ASIdentifierManager *manager = [ASIdentifierManagerClass sharedManager];
+//        result = [[manager advertisingIdentifier] UUIDString];
+//    }
+//    
+//    return result;
     
-    Class ASIdentifierManagerClass = fbdfl_ASIdentifierManagerClass();
-    if ([ASIdentifierManagerClass class]) {
-        ASIdentifierManager *manager = [ASIdentifierManagerClass sharedManager];
-        result = [[manager advertisingIdentifier] UUIDString];
-    }
-    
-    return result;
+    return @"";
 }
 
 + (NSString *)anonymousID {
@@ -432,25 +434,27 @@ NSString *const FBPersistedAnonymousIDKey   = @"anon_id";
 
 
 + (FBAdvertisingTrackingStatus)advertisingTrackingStatus {
-    if ([FBSettings restrictedTreatment] == FBRestrictedTreatmentYES) {
-        return AdvertisingTrackingDisallowed;
-    }
+//    if ([FBSettings restrictedTreatment] == FBRestrictedTreatmentYES) {
+//        return AdvertisingTrackingDisallowed;
+//    }
+//    
+//    static dispatch_once_t fetchAdvertisingTrackingStatusOnce;
+//    static FBAdvertisingTrackingStatus status;
+//    
+//    dispatch_once(&fetchAdvertisingTrackingStatusOnce, ^{
+//        status = AdvertisingTrackingUnspecified;
+//        Class ASIdentifierManagerClass = fbdfl_ASIdentifierManagerClass();
+//        if ([ASIdentifierManagerClass class]) {
+//            ASIdentifierManager *manager = [ASIdentifierManagerClass sharedManager];
+//            if (manager) {
+//                status = [manager isAdvertisingTrackingEnabled] ? AdvertisingTrackingAllowed : AdvertisingTrackingDisallowed;
+//            }
+//        }
+//    });
+//
+//    return status;
     
-    static dispatch_once_t fetchAdvertisingTrackingStatusOnce;
-    static FBAdvertisingTrackingStatus status;
-    
-    dispatch_once(&fetchAdvertisingTrackingStatusOnce, ^{
-        status = AdvertisingTrackingUnspecified;
-        Class ASIdentifierManagerClass = fbdfl_ASIdentifierManagerClass();
-        if ([ASIdentifierManagerClass class]) {
-            ASIdentifierManager *manager = [ASIdentifierManagerClass sharedManager];
-            if (manager) {
-                status = [manager isAdvertisingTrackingEnabled] ? AdvertisingTrackingAllowed : AdvertisingTrackingDisallowed;
-            }
-        }
-    });
-
-    return status;
+    return AdvertisingTrackingDisallowed;
 }
 
 + (NSMutableDictionary<FBGraphObject> *)activityParametersDictionaryForEvent:(NSString *)eventCategory

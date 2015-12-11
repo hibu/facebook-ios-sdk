@@ -203,7 +203,7 @@ void fbdfl_AudioServicesPlaySystemSound(SystemSoundID inSystemSoundID);
 
 #pragma mark AdSupport Classes
 
-Class fbdfl_ASIdentifierManagerClass(void);
+//Class fbdfl_ASIdentifierManagerClass(void);
 
 #pragma mark - SafariServices Classes
 
