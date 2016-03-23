@@ -302,8 +302,8 @@
 		9D7A374418FF14A600B1EFC2 /* FBPhotoParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D7A374318FF14A600B1EFC2 /* FBPhotoParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9D84A9611ABFECCD00CBC230 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85B08E43190596EB00EE0BB1 /* Bolts.framework */; };
 		9D84A9621ABFECD300CBC230 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85B08E43190596EB00EE0BB1 /* Bolts.framework */; };
-		9D8661141BA0157000E1BB4B /* FBContainerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D8661121BA0157000E1BB4B /* FBContainerViewController.h */; settings = {ASSET_TAGS = (); }; };
-		9D8661151BA0157000E1BB4B /* FBContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8661131BA0157000E1BB4B /* FBContainerViewController.m */; settings = {ASSET_TAGS = (); }; };
+		9D8661141BA0157000E1BB4B /* FBContainerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D8661121BA0157000E1BB4B /* FBContainerViewController.h */; };
+		9D8661151BA0157000E1BB4B /* FBContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8661131BA0157000E1BB4B /* FBContainerViewController.m */; };
 		9D8D5D991A1DACD6009BA594 /* FBTestUsersManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D8D5D971A1DACD6009BA594 /* FBTestUsersManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9D8D5D9A1A1DACD6009BA594 /* FBTestUsersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8D5D981A1DACD6009BA594 /* FBTestUsersManager.m */; };
 		9D9897471A1E5F08006D7562 /* FBTestUserSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D9897451A1E5F08006D7562 /* FBTestUserSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2422,6 +2422,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 892B1FA01926A84100E61379 /* FacebookSDK-Library.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(BUILT_PRODUCTS_DIR)\"",
@@ -2435,6 +2436,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 892B1FA01926A84100E61379 /* FacebookSDK-Library.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(BUILT_PRODUCTS_DIR)\"",
